@@ -646,6 +646,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -659,10 +660,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: e8a175b5-e84c-41da-88b4-29a62286cbd8
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Aliens vs Robots
+  organizationId: unity_vs1fe8xayg7sxw
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
