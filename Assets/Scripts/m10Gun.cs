@@ -81,7 +81,8 @@ public class m10Gun : MonoBehaviour
     void shoot()
     {
         bulletMethode(firePoint1);
-        bulletMethode(firePoint2);
+        if(firePoint2 != null)
+            bulletMethode(firePoint2);
     }
 
     void bulletMethode(Transform firepoint)

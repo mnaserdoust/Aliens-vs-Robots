@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4558685132017229309}
   - component: {fileID: 7818031880308400388}
   - component: {fileID: -9016922564061358990}
+  - component: {fileID: -3666610136063184668}
   m_Layer: 0
   m_Name: ice_bullet
   m_TagString: Untagged
@@ -94,3 +95,18 @@ CapsuleCollider:
   m_Height: 0.65092325
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3666610136063184668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8377799897233233368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5698a0f2f62ca274d9314e683ce3ca0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  explosionRadious: 20
+  effect: {fileID: 1372092015768388105, guid: ac842bc3299f7fd41bf6fe0df72c7022, type: 3}

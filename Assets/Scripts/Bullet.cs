@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     private Transform target;
 
     public float speed = 40f;
+    public float explosionRadious = 0f;
     public GameObject effect;
 
     public void seek(Transform _Target)
@@ -31,14 +32,45 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * disFrame, Space.World);
+        transform.LookAt(target);
 
     }
 
     void hitTarget()
     {
         GameObject effectIns =(GameObject)Instantiate(effect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
-        Destroy(target.gameObject);
-        Destroy(gameObject);
+        Destroy(effectIns, 5f);
+
+        if(explosionRadious>0f)
+        {
+            explode();
+        }
+
+        else
+        {
+            Destroy(target.gameObject);
+        }
+        
+        
+    }
+
+    void damage(Transform enemy)
+    {
+        Destroy(enemy.gameObject);
+    }
+
+    void explode()
+    {
+        Collider[] colliders =  Physics.OverlapSphere(transform.position,explosionRadious);
+        
+        foreach (Collider collider  in colliders)
+        {
+           
+            if (collider.tag == "Enemy")
+            {
+                //Debug.Log(collider.tag.ToString());
+                damage(collider.transform);
+            }
+        }
     }
 }
