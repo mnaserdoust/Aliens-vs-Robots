@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public GunBluePrint m10Gun;
+    public GunBluePrint canonGun;
+
+
     buildManager buildManager;
 
     private void Start()
@@ -11,12 +15,12 @@ public class Shop : MonoBehaviour
     }
     public void purchaseM10()
     {
-        buildManager.setTurretToBuild(buildManager.m10Prefab);
+        buildManager.selectTurretToBuild(m10Gun);
     }
 
     public void purchaseCanon()
     {
-        buildManager.setTurretToBuild(buildManager.canonPrefab);
+        buildManager.selectTurretToBuild(canonGun);
     }
    
 }

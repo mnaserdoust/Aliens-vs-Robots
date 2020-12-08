@@ -15,15 +15,22 @@ public class buildManager : MonoBehaviour
     public GameObject canonPrefab;
 
 
-    private GameObject turretToBuild;
+    private GunBluePrint turretToBuild;
 
-    public GameObject getTurretToBuild()
-    {
-        return turretToBuild;
-    }
+    public bool canbuild { get { return turretToBuild != null; } }
+    public bool hasMoney { get { return playerStats.Money >= turretToBuild.cost; } }
 
-    public void setTurretToBuild(GameObject turret)
+    public void selectTurretToBuild(GunBluePrint turret)
     {
         turretToBuild = turret;
+    }
+
+    public void buildGunOn(Node node)
+    {
+        if (playerStats.Money < turretToBuild.cost) return;
+
+        playerStats.Money -= turretToBuild.cost;
+        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.getBuildPosition(), Quaternion.identity);
+        node.turret = turret;
     }
 }

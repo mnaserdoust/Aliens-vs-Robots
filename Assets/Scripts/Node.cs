@@ -5,13 +5,14 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     public Color hovercoler;
+    public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
     private Renderer rend;
     private Color startcolor;
 
     
 
-    private GameObject turret;
+    public GameObject turret;
 
 
     buildManager buildManager;
@@ -28,17 +29,36 @@ public class Node : MonoBehaviour
     {
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
-        if (buildManager.getTurretToBuild() == null) return;
+        if (!buildManager.canbuild) return;
         if (turret != null)
         {
             Debug.Log("");
         }
 
-        GameObject turretToBuild = buildManager.getTurretToBuild();
+        buildManager.buildGunOn(this);
+    }
 
-        turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation) ;
+    public Vector3 getBuildPosition()
+    {
+        return transform.position + positionOffset;
     }
 
 
+    private void OnMouseEnter()
+    {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
 
+        if (!buildManager.canbuild) return;
+
+        if(buildManager.hasMoney)
+        {
+            rend.material.color = hovercoler;
+        }
+        else { rend.material.color = notEnoughMoneyColor; }
+    }
+
+    private void OnMouseExit()
+    {
+        rend.material.color = startcolor;
+    }
 }
